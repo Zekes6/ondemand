@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClientService.Managers;
-using ClientService.Models;
 using Microsoft.AspNetCore.Mvc;
+using OnDemand.ObjectModel.Managers;
+using OnDemand.ObjectModel.Models;
 
 namespace ClientService.Controllers
 {

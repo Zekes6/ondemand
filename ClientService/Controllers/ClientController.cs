@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClientService.Managers;
-using ClientService.Models;
 using Microsoft.AspNetCore.Mvc;
+using OnDemand.ObjectModel.Managers;
+using OnDemand.ObjectModel.Models;
 
 namespace ClientService.Controllers
 {
@@ -23,6 +23,12 @@ namespace ClientService.Controllers
         public async Task<Client> Get(string clientId)
         {
             var client = await _clientsRepo.Get(clientId);
+
+            client.Items.ForEach((item) =>
+            {
+                item.InsuredTotal = item.InsuredCost *
+                                    Convert.ToDecimal(Math.Ceiling((DateTime.UtcNow - item.StartInsuredAt).TotalHours));
+            });
 
             return client;
         }

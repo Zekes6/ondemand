@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using ClientService.Cosmos;
-using ClientService.Models;
+using OnDemand.ObjectModel.Cosmos;
+using OnDemand.ObjectModel.Models;
 
-namespace ClientService.Managers
+namespace OnDemand.ObjectModel.Managers
 {
     public class ClientsRepository : IClientsRepository
     {

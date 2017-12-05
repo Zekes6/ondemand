@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClientService.Managers;
-using ClientService.Models;
 using Microsoft.AspNetCore.Mvc;
+using OnDemand.ObjectModel.Managers;
+using OnDemand.ObjectModel.Models;
 
 namespace ClientService.Controllers
 {
@@ -55,7 +55,22 @@ namespace ClientService.Controllers
                 return StatusCode(404);
             }
 
-            item.IsInsured = !item.IsInsured;
+            if (item.IsInsured)
+            {
+                var period = DateTime.UtcNow - item.StartInsuredAt;
+                var totalHours = Convert.ToDecimal(Math.Ceiling(period.TotalHours));
+
+                client.PaymentInformation.Amount -= totalHours * item.InsuredCost;
+
+                item.IsInsured = false;
+            }
+            else
+            {
+                item.IsInsured = true;
+                item.StartInsuredAt = DateTime.UtcNow;
+            }
+
+            await _clientsRepo.Update(clientId, client);
 
             return StatusCode(200);
         }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ClientService.Models
+namespace OnDemand.ObjectModel.Models
 {
     public class InsuredItem
     {
@@ -15,9 +13,13 @@ namespace ClientService.Models
 
         public bool IsInsured { get; set; }
 
+        public DateTime StartInsuredAt { get; set; }
+
         public string ClassifiedId { get; set; }
         
         public decimal InsuredCost { get; set; }
+
+        public decimal InsuredTotal { get; set; }
 
         public ItemStatus Status { get; set; }
 
