@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import ListOfInsurances from './ListOfInsurances';
 
 const styles = StyleSheet.create({
   welcome: {
@@ -11,16 +12,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginStatusMessage = ({ isLoggedIn, dispatch }) => {
+const LoginStatusMessage = ({isLoggedIn}) => {
   if (!isLoggedIn) {
     return <Text>Please log in</Text>;
   }
   return (
-    <View>
-      <Text style={styles.welcome}>
-        {'You are "logged in" right now'}
-      </Text>
-    </View>
+    <ListOfInsurances />
   );
 };
 

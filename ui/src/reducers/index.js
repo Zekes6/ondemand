@@ -36,14 +36,27 @@ function nav(state = initialNavState, action) {
   return nextState || state;
 }
 
-const initialAuthState = { isLoggedIn: false };
+const initialAuthState = { isLoggedIn: false, userName: '' };
 
 function auth(state = initialAuthState, action) {
   switch (action.type) {
     case 'Login':
       return { ...state, isLoggedIn: true };
     case 'Logout':
-      return { ...state, isLoggedIn: false };
+      return { ...state, userName: '', isLoggedIn: false };
+    default:
+      return state;
+  }
+}
+
+const initialInsurances = {list:[{
+  name:'Mobile'
+}, {
+  name:'Bike'
+}]}
+
+function insurances(state = initialInsurances, action) {
+  switch(action.type) {
     default:
       return state;
   }
@@ -52,6 +65,7 @@ function auth(state = initialAuthState, action) {
 const AppReducer = combineReducers({
   nav,
   auth,
+  insurances,
 });
 
 export default AppReducer;
