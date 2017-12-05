@@ -49,9 +49,23 @@ function auth(state = initialAuthState, action) {
   }
 }
 
+const initialInsurances = {list:[{
+  name:'Mobile'
+}, {
+  name:'Bike'
+}]}
+
+function insurances(state = initialInsurances, action) {
+  switch(action.type) {
+    default:
+      return state;
+  }
+}
+
 const AppReducer = combineReducers({
   nav,
   auth,
+  insurances,
 });
 
 export default AppReducer;
