@@ -11,15 +11,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginStatusMessage = ({ isLoggedIn, dispatch }) => {
-  if (!isLoggedIn) {
+const LoginStatusMessage = (props) => {
+  if (!props.isLoggedIn) {
     return <Text>Please log in</Text>;
   }
   return (
     <View>
-      <Text style={styles.welcome}>
-        {'You are "logged in" right now'}
-      </Text>
     </View>
   );
 };
